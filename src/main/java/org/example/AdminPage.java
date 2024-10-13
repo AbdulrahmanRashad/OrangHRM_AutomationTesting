@@ -58,7 +58,19 @@ public class AdminPage {
         return myBrowser.findElement(By.xpath("(//BUTTON[@data-v-10d463b7=''])[2]"));
     }
 
+    public static WebElement SystemUserText(WebDriver myBrowser) {
+        return myBrowser.findElement(By.cssSelector("h5[class='oxd-text oxd-text--h5 oxd-table-filter-title']"));
+    }
+
     public static WebElement ResultFound(WebDriver myBrowser) {
         return myBrowser.findElement(By.cssSelector("span[class='oxd-text oxd-text--span']"));
+    }
+
+    public static WebElement RemoveIcon(WebDriver myBrowser) {
+        return myBrowser.findElement(By.cssSelector("button[class='oxd-icon-button oxd-table-cell-action-space']"));
+    }
+
+    public static WebElement ConfirmRemoveButton(WebDriver myBrowser) {
+        return myBrowser.findElement(By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']"));
     }
 }

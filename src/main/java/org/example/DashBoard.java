@@ -10,7 +10,9 @@ public class DashBoard {
         return myBrowser.findElement(By.cssSelector("span[class='oxd-text oxd-text--span oxd-main-menu-item--name']"));
     }
 
-    public static WebElement SystemUserText(WebDriver myBrowser) {
-        return myBrowser.findElement(By.cssSelector("h5[class='oxd-text oxd-text--h5 oxd-table-filter-title']"));
+
+
+    public static WebElement DashBoardText(WebDriver myBrowser) {
+        return myBrowser.findElement(By.cssSelector("h6[class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']"));
     }
 }

@@ -39,17 +39,18 @@ public class Test {
     public void validLogin() throws InterruptedException {
 
         login = new LoginPage();
+        dashBoard = new DashBoard();
 
         login.UsernameField(myBrowser).sendKeys("Admin");
         login.PasswordField(myBrowser).sendKeys("admin123");
         login.SubmitButton(myBrowser).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         // Assert URL after login
         Assert.assertEquals(myBrowser.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
 
         //Second Assertion
-        String actualResult = login.DashBoardText(myBrowser).getText();
+        String actualResult = dashBoard.DashBoardText(myBrowser).getText();
         Assert.assertTrue(actualResult.contains("Dashboard"));
 
     }
@@ -59,16 +60,16 @@ public class Test {
     @org.testng.annotations.Test(dependsOnMethods = "validLogin", priority = 2, testName = "navigateToAdminMenu")
     public void navigateToAdminMenu() throws InterruptedException {
         dashBoard = new DashBoard();
-
+        admin = new AdminPage();
 
         dashBoard.AdminTap(myBrowser).click();
-        Thread.sleep(2000);
+        Thread.sleep(1500);
 
         // Assert URL after navigating to Admin menu
         Assert.assertTrue(myBrowser.getCurrentUrl().contains("/admin"));
 
         //Assert User System Text
-        Assert.assertTrue(dashBoard.SystemUserText(myBrowser).getText().contains("System Users"));
+        Assert.assertTrue(admin.SystemUserText(myBrowser).getText().contains("System Users"));
 
     }
 
@@ -77,7 +78,7 @@ public class Test {
         admin = new AdminPage();
 
         admin.getAddButton(myBrowser).click();
-        Thread.sleep(2000);
+        Thread.sleep(1500);
 
         admin.getUserRole(myBrowser).click();
         Thread.sleep(1500);
@@ -87,24 +88,42 @@ public class Test {
         Thread.sleep(1500);
         admin.getDropDownOption2(myBrowser).click();
 
-        admin.getEmployeeSearch(myBrowser).sendKeys("m");
-        Thread.sleep(3000);
+        admin.getEmployeeSearch(myBrowser).sendKeys("a");
+        Thread.sleep(4000);
         admin.getEmployeeOption(myBrowser).click();
 
-        admin.getUsername(myBrowser).sendKeys("Abdulrahman32");
+        admin.getUsername(myBrowser).sendKeys("Tahoun");
         admin.getNewPassword(myBrowser).sendKeys("User123");
         admin.getConfirmPassword(myBrowser).sendKeys("User123");
         admin.getSaveButton(myBrowser).click();
         Thread.sleep(6000);
 
-        // Navigate for search result
-        admin.SearchField(myBrowser).sendKeys("Abdulrahman32");
+        // Searching for the created user
+        admin.SearchField(myBrowser).sendKeys("Tahoun");
         admin.SearchButton(myBrowser).click();
 
         Thread.sleep(2000);
         // Assert Creating Admin user
         String actualResult = admin.ResultFound(myBrowser).getText();
         Assert.assertTrue(actualResult.contains("(1) Record Found"));
+    }
 
+    @org.testng.annotations.Test(dependsOnMethods = "createUser")
+    public void DeleteTheUser() throws InterruptedException {
+        admin = new AdminPage();
+
+        // Remove the created user
+        admin.RemoveIcon(myBrowser).click();
+        Thread.sleep(1000);
+        admin.ConfirmRemoveButton(myBrowser).click();
+        Thread.sleep(5000);
+
+        //Searching for the removed user
+        admin.SearchButton(myBrowser).click();
+        Thread.sleep(2000);
+
+        // Assert removing the user
+        String actualResult3 = admin.ResultFound(myBrowser).getText();
+        Assert.assertTrue(actualResult3.contains("No Records Found"));
     }
 }

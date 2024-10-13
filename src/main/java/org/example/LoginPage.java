@@ -30,9 +30,7 @@ public class LoginPage {
         return SubmitElement;
     }
 
-    public static WebElement DashBoardText(WebDriver myBrowser) {
-        return myBrowser.findElement(By.cssSelector("h6[class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']"));
-    }
+
 
 
 }
