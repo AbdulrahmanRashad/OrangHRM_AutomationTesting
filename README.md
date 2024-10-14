@@ -30,4 +30,10 @@ ChromeDriver: Required for Chrome browser automation.
   
   Assertions: Verifies the success message is displayed after user creation.
 
-  ### Created by SMART Team. 
+ 4.  Remove created User:
+
+  Description: Automates the removal of the new created user in the Admin section.
+  
+  Assertions: Verify that the search results do not contain the removed user, confirming successful deletion.
+
+  ##### Created by SMART Team. 
