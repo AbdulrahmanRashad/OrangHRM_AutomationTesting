@@ -175,25 +175,32 @@ public class Test {
         Thread.sleep(3000);
         Leave.leaveMenu(myBrowser).click();
 
+        //Choose Entitlement from menu
         Thread.sleep(3000);
         Leave.entitlementsMenu(myBrowser).click();
 
+        //Choose Add Entitilement from drop down
         Thread.sleep(3000);
         Leave.addEntitlement(myBrowser).click();
 
         // Fill in the form
+        //Name field search
         Thread.sleep(3000);
         Leave.employeeNameField(myBrowser).sendKeys("d");
 
+        //employee option
         Thread.sleep(3000);
         Leave.employeeOption(myBrowser).click();
 
+        // leave type field
         Thread.sleep(3000);
         Leave.leaveTypeDropdown(myBrowser).click();
 
+        //choose leave type
         Thread.sleep(3000);
         Leave.leaveTypeOption(myBrowser).click();
 
+        //add entitlement field
         Thread.sleep(3000);
         Leave.entitlementField(myBrowser).sendKeys("10");
 
@@ -201,12 +208,13 @@ public class Test {
         Thread.sleep(3000);
         Leave.saveButton(myBrowser).click();
 
+        //Confirmation pop up message
         Thread.sleep(3000);
         Leave.confirmButton(myBrowser).click();
 
         Thread.sleep(8000);
 
-        // Assert on the
+        // Assert the leave entitlement is added
         String actualResult = Leave.Result(myBrowser).getText();
         Assert.assertTrue(actualResult.contains("Added"));
     }

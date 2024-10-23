@@ -4,7 +4,7 @@
 This project automates the process of navigating to the OrangeHRM web application, logging in with valid credentials, and performing administrative tasks like creating a new user. The automation scripts are written in Java using the Selenium WebDriver and TestNG framework.
 
 ## Prerequisites
-Java JDK: Ensure you have JDK-23 installed.
+Java JDK: Ensure you have JDK-21 installed.
 
 Maven: Used for managing project dependencies.
 
@@ -36,4 +36,21 @@ ChromeDriver: Required for Chrome browser automation.
   
   Assertions: Verify that the search results do not contain the removed user, confirming successful deletion.
 
-  ##### Created by SMART Team.>>>
+5.  Navigate to Recruitment Menu
+
+  Description: Validates navigation to the Recruitment menu.
+
+  Assertions: Confirms the URL changes appropriately.
+
+6.  Search for a Payroll Administrator Vacancy
+
+  Description: Verifies the search functionality in the Recruitment menu.
+
+  Assertions: Checks that the search results are correct and the vacancy can be deleted.
+
+7.  Add Leave Entitlement
+
+  Description: Automates the process of adding leave entitlement.
+
+  Assertions: Verifies the leave entitlement is added successfully.
+  
